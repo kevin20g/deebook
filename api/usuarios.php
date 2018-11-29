@@ -27,8 +27,8 @@ $app->post('/Usuarios', function ($request, $response, $args) {
    return $response->withJson($usuario);
 });
 
-$app->put('/Usuarios/{id}', function ($request, $response, $args) {
- /* try{
+$app->put('/Usuarios/update/{id}', function ($request, $response, $args) {
+ try{
    $postBody = file_get_contents("php://input");
    $postBody = json_decode($postBody);
    $nombre = $postBody->Nombre;
@@ -43,7 +43,7 @@ $app->put('/Usuarios/{id}', function ($request, $response, $args) {
    						  array(':nombre'=>$nombre, ':pass'=>$pass, ':id'=>$id);
   } catch (Exception $e){
   	 return $response->withJson($e->getMessage());
-  } */
+  } 
    $usuario = $db->query("SELECT UsuarioNombre, UsuarioPass FROM usuario WHERE idUsuario=:id'", array(':id'=>$id);
    return $response->withJson($usuario);
 });
