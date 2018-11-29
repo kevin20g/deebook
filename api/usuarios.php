@@ -27,7 +27,7 @@ $app->post('/Usuarios', function ($request, $response, $args) {
    return $response->withJson($usuario);
 });
 
-/*$app->post('/Usuarios/{id}', function ($request, $response, $args) {
+$app->put('/Usuarios/{id}', function ($request, $response, $args) {
    $postBody = file_get_contents("php://input");
    $postBody = json_decode($postBody);
    $nombre = $postBody->Nombre;
@@ -43,4 +43,4 @@ $app->post('/Usuarios', function ($request, $response, $args) {
    
    $usuario = $db->query("SELECT idUsuario, UsuarioNombre, UsuarioPass FROM usuario");
    return $response->withJson($usuario);
-});*/
+});
