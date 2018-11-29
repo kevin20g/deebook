@@ -27,7 +27,7 @@ $app->post('/Usuarios', function ($request, $response, $args) {
    return $response->withJson($usuario);
 });
 
-$app->put('/Usuarios/{id}', function ($request, $response, $args) {
+$app->put('/Usuario/{id}', function ($request, $response, $args) {
    $postBody = file_get_contents("php://input");
    $postBody = json_decode($postBody);
    $nombre = $postBody->Nombre;
