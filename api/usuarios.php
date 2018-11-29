@@ -2,7 +2,7 @@
 // Define app routes
 $app->get('/Usuarios', function ($request, $response, $args) {
      $db = new DB();
-    $usuario = $db->query("SELECT IdUsuario FROM usuario");
+    $usuario = $db->query("SELECT * FROM usuario");
     return $response->withJson($usuario);
 });
 // $app->get('/Usuarios/{id}', function ($request, $response, $args) {
