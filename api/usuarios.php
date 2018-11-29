@@ -25,3 +25,21 @@ $app->post('/Usuarios', function ($request, $response, $args) {
    $usuario = $db->query("SELECT idUsuario, UsuarioNombre, UsuarioPass FROM usuario");
    return $response->withJson($usuario);
 });
+
+$app->post('/Usuarios/{id}', function ($request, $response, $args) {
+   $postBody = file_get_contents("php://input");
+   $postBody = json_decode($postBody);
+   $nombre = $postBody->Nombre;
+   $pass = $postBody->pass;
+    
+   $db = new DB();
+   $id = $args['id'];
+   $usuario = $db->query('UPDATE usuario 
+   						  SET  UsuarioNombre = :nombre,
+   						  UsuarioPass = :pass
+   						  WHERE idUsuario=:id', 
+   						  array(':nombre'=>$nombre, ':pass'=>$pass, ':id'=>$id);
+   
+   $usuario = $db->query("SELECT idUsuario, UsuarioNombre, UsuarioPass FROM usuario");
+   return $response->withJson($usuario);
+});
