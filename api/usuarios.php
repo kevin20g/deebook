@@ -30,6 +30,7 @@ $app->post('/Usuarios', function ($request, $response, $args) {
 
 $app->delete('/Usuarios/{id}', function ($request, $response, $args) {
    $db = new DB();
+   $id = $args['id'];
    $usuario = $db->query('DELETE FROM usuario WHERE idUsuario=:id', array(':id'=>$id)); 
   	return $response->withJson('Usuario Eliminado Correctamente');
 });
