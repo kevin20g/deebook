@@ -27,6 +27,14 @@ $app->post('/Usuarios', function ($request, $response, $args) {
    return $response->withJson($usuario);
 });
 
+
+$app->delete('/Usuarios/{id}', function ($request, $response, $args) {
+   $db = new DB();
+   $usuario = $db->query('DELETE FROM usuario WHERE idUsuario=:id', array(':id'=>$id)); 
+  	return $response->withJson('Usuario Eliminado Correctamente');
+});
+
+
 /*$app->put('/Usuarios/{id}', function ($request, $response, $args) {
  try{
    $postBody = file_get_contents("php://input");
