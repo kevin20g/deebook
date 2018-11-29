@@ -37,7 +37,7 @@ $app->post('/Usuarios/{id}', function ($request, $response, $args) {
    $usuario = $db->query('UPDATE usuario 
    						  SET  UsuarioNombre = :nombre,
    						  UsuarioPass = :pass
-   						  WHERE idUsuario=:id', 
+   						  WHERE idUsuario = :id', 
    						  array(':nombre'=>$nombre, ':pass'=>$pass, ':id'=>$id);
    
    $usuario = $db->query("SELECT idUsuario, UsuarioNombre, UsuarioPass FROM usuario");
