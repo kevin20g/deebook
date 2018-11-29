@@ -11,14 +11,17 @@ $app->get('/Usuarios/{id}', function ($request, $response, $args) {
      $usuario = $db->query('SELECT idUsuario, UsuarioNombre, UsuarioPass FROM usuario WHERE idUsuario=:id', array(':id'=>$id));
      return $response->withJson($usuario);
  });
-// $app->post('/Usuarios', function ($request, $response, $args) {
-//     $postBody = file_get_contents("php://input");
-//     $postBody = json_decode($postBody);
-//     $nombre = $postBody->Nombre;
-//     $pass = $postBody->pass;
+
+$app->post('/Usuarios', function ($request, $response, $args) {
+   $postBody = file_get_contents("php://input");
+   $postBody = json_decode($postBody);
+   $nombre = $postBody->Nombre;
+   $pass = $postBody->pass;
     
-//     $db = new DB();
-//     $usuario = $db->query('INSERT INTO usuario (Nombre, pass) VALUES (:nombre,:pass)', array(':nombre'=>$nombre, ':pass'=>$pass));
-//     $usuario = $db->query("SELECT Idusuario, Nombre, pass FROM usuario");
-//     return $response->withJson($usuario);
-// });
+   $db = new DB();
+   $usuario = $db->query('INSERT INTO usuario (UsuarioNombre, UsuarioPass) 
+   							VALUES (:nombre,:pass)', array(':nombre'=>$nombre, ':pass'=>$pass));
+   
+   $usuario = $db->query("SELECT idUsuario, UsuarioNombre, UsuarioPass FROM usuario");
+   return $response->withJson($usuario);
+});
