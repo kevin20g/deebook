@@ -4,7 +4,7 @@
 //GET DE TODOS LOS USUARIOS EN LA BASE DE DATOS
 $app->get('/Usuarios', function ($request, $response, $args) {
      $db = new DB();
-    $usuario = $db->query("SELECT idUsuario, UsuarioNombre, UsuarioPass FROM usuario");
+    $usuario = $db->query("SELECT * FROM usuario");
     return $response->withJson($usuario);
 });
 
