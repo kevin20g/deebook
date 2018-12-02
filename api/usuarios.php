@@ -4,7 +4,7 @@
 //GET DE TODOS LOS USUARIOS EN LA BASE DE DATOS
 $app->get('/Usuarios', function ($request, $response, $args) {
      $db = new DB();
-    $usuario = $db->query("SELECT * FROM usuario");
+    $usuario = $db->query("SELECT idUsuario, Nombre, Ap_paterno, fecha_nacimiento, Nickname   FROM usuario");
     return $response->withJson($usuario);
 });
 
@@ -12,7 +12,7 @@ $app->get('/Usuarios', function ($request, $response, $args) {
 $app->get('/Usuarios/{id}', function ($request, $response, $args) {
      $db = new DB();
      $id = $args['id'];
-     $usuario = $db->query('SELECT idUsuario, UsuarioNombre, UsuarioPass FROM usuario WHERE idUsuario=:id', array(':id'=>$id));
+     $usuario = $db->query('SELECT idUsuario, Nombre, Ap_paterno, fecha_nacimiento, Nickname FROM usuario WHERE idUsuario=:id', array(':id'=>$id));
      return $response->withJson($usuario);
  });
 
